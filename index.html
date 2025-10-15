@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>NowTown</title>
+    
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      defer
+    ></script>
+    <script src="main.js" defer></script>
+  </head>
+
+  <body>
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html"
+          ><img
+            src="images/Logo.png"
+            alt="Logo"
+            width="150"
+            height="50"
+            class="d-inline-block align-text-top"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarScroll"
+          aria-controls="navbarScroll"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul
+            class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+            style="--bs-scroll-height: 100px"
+          >
+            <li>
+              <a href="index.html"
+                ><button class="btn btn-outline-secondary m-2">Home</button></a
+              >
+            </li>
+            <li>
+              <a href="about_us.html"
+                ><button class="btn btn-outline-secondary m-2">
+                  About us
+                </button></a
+              >
+            </li>
+            <li>
+              <a href="contact_us.html"
+                ><button class="btn btn-outline-secondary m-2">
+                  Contact us
+                </button></a
+              >
+            </li>
+            <li>
+              <a href="events.html"
+                ><button class="btn btn-outline-secondary m-2">
+                  Events
+                </button></a>
+
+            </li>
+            <li>
+              <button class="btn btn-outline-secondary m-2" id="language-toggle" onclick="toggleLanguage()" style="display: flex; align-items: center; gap: 6px; cursor:pointer; font-size: 17px; padding: 4px 10px; border:1px solid #eeeeee70; border-radius:5px;  width:max-content;">
+              <img id="lang-flag" src="https://flagcdn.com/sy.svg" alt="Syrian Flag" style="width:20px; height:14px;">
+              <span id="lang-label">Arabic</span>
+              </button>
+            </li>
+          </ul>
+          <!-- Switch Themes  -->
+          <div class="form-check form-switch d-flex align-items-center">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="darkModeSwitch"
+            />
+            <label class="form-check-label ms-2" for="darkModeSwitch">
+              <i id="themeIcon" class="fas fa-sun"></i>
+            </label>
+          </div>
+          <div class="filter-bar text-center my-3 tajawal-bold">
+            <button
+              class="btn btn-outline-success filter-btn"
+              data-filter="all"
+            >
+              All
+            </button>
+            <button
+              class="btn btn-outline-secondary filter-btn"
+              data-filter="ثقافة"
+            >
+              ثقافة
+            </button>
+            <button
+              class="btn btn-outline-secondary filter-btn"
+              data-filter="رياضة"
+            >
+              رياضة
+            </button>
+            <button
+              class="btn btn-outline-secondary filter-btn"
+              data-filter="موسيقى"
+            >
+              موسيقى
+            </button>
+            <button
+              class="btn btn-outline-secondary filter-btn"
+              data-filter="عائلي"
+            >
+              عائلي
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- فعاليات بارزة -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="el-messiri">فعاليات بارزة</h2>
+          <p>
+            استكشف أبرز الفعاليات التي ننظمها للعائلات والمجتمع، تشمل أنشطة
+            تعليمية وترفيهية، مأكولات لذيذة، وموسيقى ممتعة لجميع الأعمار.
+          </p>
+        </div>
+        <div class="services-grid">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="service-card" data-category="رياضة,عائلي">
+                  <div class="service-icon">
+                    <i class="fas fa-futbol"></i>
+                  </div>
+                  <h3>مباريات كرة قدم</h3>
+                  <p>مباريات كرة قدم حماسية بين أقوى الفرق المحلية والعالمية</p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="service-card" data-category="ثقافة">
+                  <div class="service-icon">
+                    <i class="far fa-lightbulb"></i>
+                  </div>
+                  <h3>مؤتمرات علمية</h3>
+                  <p>مؤتمرات علمية لمناقشة العديد من المواضيع الحديثة</p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="service-card" data-category="ثقافة, عائلي">
+                  <div class="service-icon">
+                    <i class="fas fa-landmark"></i>
+                  </div>
+                  <h3>رحلة التاريخ</h3>
+                  <p>
+                    رحلة تعليمية ممتعة للعائلات، نستكشف خلالها التاريخ والآثار،
+                    مع أنشطة تفاعلية للأطفال وأجواء ثقافية مميزة
+                  </p>
+                </div>
+              </div>
+
+
+              <div class="swiper-slide">
+                <div class="service-card" data-category="موسيقى, عائلي">
+                  <div class="service-icon">
+                    <i class="fas fa-landmark"></i>
+                  </div>
+                 <h3>نكهاتنا معا</h3>
+                  <p>
+                    تجمع عائلي ممتع يضم أشهى الأطباق، أجواء موسيقية حية، وأنشطة
+                    للأطفال في أجواء ودية
+                  </p>
+                </div>
+              </div>
+
+              
+            </div>
+            <!-- Navigation buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- أحدث الفعاليات -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+        <div class="section-header">
+          <h2>أحدث الفعاليات</h2>
+          <p>لنأخذ نظرة سريعة على أحدث الفعاليات على موقعنا</p>
+        </div>
+
+        <div class="portfolio-grid">
+          <div class="portfolio-item" data-category="ثقافة">
+            <img src="images/home_page/musuem.jpg" alt="Elegant Wedding" />
+            <div class="portfolio-overlay">
+              <h3>زيارة المتحف الوطني</h3>
+              <p>جولة للتعرف على الاثار</p>
+            </div>
+          </div>
+          <div class="portfolio-item" data-category="ثقافي">
+            <img
+              src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt="Corporate Conference"
+            />
+            <div class="portfolio-overlay">
+              <h3>مؤتمر حوار علمي</h3>
+              <p>نقاشات علمية حول احدث تقنيات التعديل البيولوجي</p>
+            </div>
+          </div>
+          <div class="portfolio-item" data-category="عائلي">
+            <img src="images/home_page/party.jpg" alt="Birthday Party" />
+            <div class="portfolio-overlay">
+              <h3>حفلة عيد ميلاد</h3>
+              <p>ستقام الحفلة في صالة الاحلام</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="members" class="members">
+<div ><h1 style="margin-bottom: 35px" >المشاركون</h1></div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">اسم الطالب</th>
+      <th scope="col">id</th>
+      <th scope="col">الدور</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-secondary">
+      <th scope="row">1</th>
+      <td>عمرو الجبلي</td>
+      <td>amro_285137</td>
+      <td>Home page, Event page, Events page</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>أنس شاهين</td>
+      <td>anas_314197</td>
+      <td>Home page, Event page, Events page</td>
+    </tr>
+    <tr class="table-secondary">
+      <th scope="row">3</th>
+      <td >عدي الشيخ عرابي</td>
+      <td>oday_291652</td>
+      <td>About us page, contact us page</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td >محمد صالح</td>
+      <td>mohamad_salh_298020</td>
+      <td>About us page, contact us page</td>
+    </tr>
+  </tbody>
+</table>
+
+    </section>
+
+    <!-- scroll to top button-->
+    <button id="scrollTopBtn">↑</button>
+
+    <!-- footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>NowTown</h3>
+            <p>
+              نصنع لحظات لا تُنسى من خلال خدماتنا المتميزة في إدارة الفعاليات.
+              رؤيتكم، خبرتنا
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3>معلومات تواصل</h3>
+            <ul style="list-style: none">
+              <li>
+                Email : anas.shahen.2020@gmail.com<a
+                  href="anas.shahen.2020@gmail.com"
+                  ><i class="fas fa-envelope-open m-1"></i
+                ></a>
+              </li>
+              <li>
+                Phone : 0992380816<a href=""
+                  ><i class="fas fa-phone m-1"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>تابعونا</h3>
+            <ul style="list-style: none">
+              <li>
+                FaceBook <a href="#"><i class="fab fa-facebook m-2"></i></a>
+              </li>
+
+              <li>
+                Instagram <a href="#"><i class="fab fa-instagram m-2"></i></a>
+              </li>
+              <li>
+                Linkedin <a href="#"><i class="fab fa-linkedin m-2"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          style="
+            border-top: 1px solid #34495e;
+            padding-top: 20px;
+            margin-top: 30px;
+          "
+        >
+          <p>&copy; 2025 NowTown. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="main.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper(".swiper", {
+          slidesPerView: 3,
+          spaceBetween: 20,
+          loop: true,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          breakpoints: {
+            320: { slidesPerView: 1, spaceBetween: 10 },
+            768: { slidesPerView: 2, spaceBetween: 15 },
+            1024: { slidesPerView: 3, spaceBetween: 20 },
+          },
+          direction: "horizontal",
+          // don't set `rtl:true` here — use document dir or let Swiper auto-detect;
+          // if you need a JS-only change, you can set `rtl: true` in some builds but doc best-practice is using dir.
+        });
+      });
+      
+    </script>
+
+
+
+<!-- Language Toggle Button -->
+
+
+<div id="google_translate_element" style="display:none;"></div>
+
+
+<script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+
+
+  </body>
+</html>

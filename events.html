@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--=============== REMIXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <title>Events</title>
+
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html"
+          ><img
+            src="images/Logo.png"
+            alt="Logo"
+            width="150"
+            height="50"
+            class="d-inline-block align-text-top"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarScroll"
+          aria-controls="navbarScroll"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul
+            class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+            style="--bs-scroll-height: 100px"
+          >
+            <li>
+              <a href="index.html"
+                ><button class="btn btn-outline-secondary m-2">Home</button></a
+              >
+            </li>
+            <li>
+              <a href="about_us.html"
+                ><button class="btn btn-outline-secondary m-2">
+                  About us
+                </button></a
+              >
+            </li>
+            <li>
+              <a href="contact_us.html"
+                ><button class="btn btn-outline-secondary m-2">
+                  Contact us
+                </button></a
+              >
+            </li>
+            <li>
+              <a href="events.html"
+                ><button class="btn btn-outline-secondary m-2">
+                  Events
+                </button></a>
+            </li>
+            <li>
+              <button class="btn btn-outline-secondary m-2" id="language-toggle" onclick="toggleLanguage()" style="display: flex; align-items: center; gap: 6px; cursor:pointer; font-size: 17px; padding: 4px 10px; border:1px solid #eeeeee70; border-radius:5px;  width:max-content;">
+              <img id="lang-flag" src="https://flagcdn.com/sy.svg" alt="Syrian Flag" style="width:20px; height:14px;">
+              <span id="lang-label">Arabic</span>
+              </button>
+            </li>
+          </ul>
+          <!-- Switch Themes  -->
+          <div class="form-check form-switch d-flex align-items-center">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="darkModeSwitch"
+            />
+            <label class="form-check-label ms-2" for="darkModeSwitch">
+              <i id="themeIcon" class="fas fa-sun"></i>
+            </label>
+          </div>
+
+          <div>
+            <form class="d-flex" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="ابحث..."
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">بحث</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="card">
+      <div class="card__container container">
+        <article
+          class="card__article card-yellow"
+          data-name="زيارة المتحف"
+          data-date="30/9/2025"
+          data-location="دمشق"
+          data-category="ثقافة"
+        >
+          <img
+            src="images/events_page/musuem.jpg"
+            alt="image"
+            class="card__img"
+          />
+          <div class="card__shadow"></div>
+
+          <div class="card__data">
+            <h2 class="card__name">زيارة المتحف</h2>
+            <span style="color: white" class="card__profession">30/9/2025</span>
+          </div>
+
+          <div class="card__clip">
+            <i class="ri-menu-4-line"></i>
+          </div>
+
+          <div class="info">
+            <div class="info__data">
+              <h2 class="info__name">زيارة المتحف</h2>
+              <p class="info__description">
+                استمتع بيوم مليئ بالثقافة والتاريخ في المتحف الوطني في دمشق,
+                ولنستمتع برؤية تاريخنا العريق
+              </p>
+              <a href="event.html?id=musuem" class="info__button"
+                >تفاصيل أكثر</a
+              >
+            </div>
+          </div>
+        </article>
+
+        <article class="card__article card-green">
+          <img
+            src="images/events_page/sports_1.jpg"
+            alt="image"
+            class="card__img"
+          />
+          <div class="card__shadow"></div>
+
+          <div class="card__data">
+            <h2 class="card__name">لعبة كرة قدم</h2>
+            <span class="card__profession style=" style="color: white"
+              >1/10/2025</span
+            >
+          </div>
+
+          <div class="card__clip">
+            <i class="ri-menu-4-line"></i>
+          </div>
+
+          <div class="info">
+            <div class="info__data">
+              <h2 class="info__name">لعبة كرة قدم</h2>
+              <p class="info__description">
+                استمتع بمباراة كرة قدم حماسية بين الوحدة والكرامة في ملعب
+                الفيحاء بدمشق
+              </p>
+              <a href="event.html?id=football1" class="info__button"
+                >تفاصيل أكثر</a
+              >
+            </div>
+          </div>
+        </article>
+
+        <!-- <article class="card__article card-pink"> -->
+
+        <article class="card__article card-pink">
+          <img
+            src="images/events_page/conference_1.jpg"
+            alt="image"
+            class="card__img"
+          />
+          <div class="card__shadow"></div>
+
+          <div class="card__data">
+            <h2 class="card__name">مؤتمر علمي</h2>
+            <span style="color: white">15/10/2025</span>
+          </div>
+
+          <div class="card__clip">
+            <i class="ri-menu-4-line"></i>
+          </div>
+
+          <div class="info">
+            <div class="info__data">
+              <h2 class="info__name">مؤتمر علمي</h2>
+              <p class="info__description">
+                شارك في المؤتمر العلمي الدولي حول التكنولوجيا والابتكار في جامعة
+                دمشق
+              </p>
+              <a href="event.html?id=conference1" class="info__button"
+                >تفاصيل أكثر</a
+              >
+            </div>
+          </div>
+        </article>
+
+        <article class="card__article card-orange">
+          <img
+            src="images/events_page/book.jpg"
+            alt="image"
+            class="card__img"
+          />
+          <div class="card__shadow"></div>
+
+          <div class="card__data">
+            <h2 class="card__name">معرض الكتاب</h2>
+            <span class="card__profession" style="color: white"
+              >30/11/2025</span
+            >
+          </div>
+
+          <div class="card__clip">
+            <i class="ri-menu-4-line"></i>
+          </div>
+
+          <div class="info">
+            <div class="info__data">
+              <h2 class="info__name" style="font-family: sans-serif">
+                معرض الكتاب
+              </h2>
+              <p class="info__description">
+                زوروا معرض الكتاب الدولي في المكتبة الوطنية في دمشق لتجدوا أحدث
+                الإصدارات والكتب
+              </p>
+              <a href="event.html?id=book_exhibition" class="info__button"
+                >تفاصيل أكثر</a
+              >
+            </div>
+          </div>
+        </article>
+        <article class="card__article card-blue">
+          <img
+            src="images/events_page/sabah-fakhri.jpg"
+            alt="image"
+            class="card__img"
+          />
+          <div class="card__shadow"></div>
+
+          <div class="card__data">
+            <h2 class="card__name">حفلة غنائية</h2>
+            <span class="card__profession" style="color: white"
+              >18/12/2025</span
+            >
+          </div>
+
+          <div class="card__clip">
+            <i class="ri-menu-4-line"></i>
+          </div>
+
+          <div class="info">
+            <div class="info__data">
+              <h2 class="info__name">حفلة غنائية</h2>
+              <p class="info__description">
+                استمتعوا بأمسية غنائية رائعة مع الفنان صباح فخري في دار الأوبرا
+                بدمشق
+              </p>
+              <a href="event.html?id=musical_event" class="info__button"
+                >تفاصيل أكثر</a
+              >
+            </div>
+          </div>
+        </article>
+
+        <article class="card__article card-red">
+          <img
+            src="images/events_page/cleaning.jpg"
+            alt="image"
+            class="card__img"
+          />
+          <div class="card__shadow"></div>
+
+          <div class="card__data">
+            <h2 class="card__name">حملة تنظيف</h2>
+            <span style="color: white" class="card__profession"
+              >30/12/2025</span
+            >
+          </div>
+
+          <div class="card__clip">
+            <i class="ri-menu-4-line"></i>
+          </div>
+
+          <div class="info">
+            <div class="info__data">
+              <h2 class="info__name">حملة تنظيف</h2>
+              <p class="info__description">
+                انضم الينا في جعل مدينة دمشق أنظف من خلال حملة تنظيف
+              </p>
+              <a href="event.html?id=cleaning_campaign" class="info__button"
+                >تفاصيل أكثر</a
+              >
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+ 
+    
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>NowTown</h3>
+            <p>
+              نصنع لحظات لا تُنسى من خلال خدماتنا المتميزة في إدارة الفعاليات.
+              رؤيتكم، خبرتنا
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3>معلومات تواصل</h3>
+            <ul style="list-style: none">
+              <li>
+                Email : anas.shahen.2020@gmail.com<a
+                  href="anas.shahen.2020@gmail.com"
+                  ><i class="fas fa-envelope-open m-1"></i
+                ></a>
+              </li>
+              <li>
+                Phone : 0992380816<a href=""
+                  ><i class="fas fa-phone m-1"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>تابعونا</h3>
+            <ul style="list-style: none">
+              <li>
+                FaceBook <a href="#"><i class="fab fa-facebook m-2"></i></a>
+              </li>
+
+              <li>
+                Instagram <a href="#"><i class="fab fa-instagram m-2"></i></a>
+              </li>
+              <li>
+                Linkedin <a href="#"><i class="fab fa-linkedin m-2"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          style="
+            border-top: 1px solid #34495e;
+            padding-top: 20px;
+            margin-top: 30px;
+          "
+        >
+          <p>&copy; 2025 NowTown. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Search bar for this page  -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const searchForm = document.querySelector('form[role="search"]');
+        const searchInput = document.querySelector('input[type="search"]');
+        const cards = document.querySelectorAll(".card__article");
+        const noResults = document.querySelector(".no-results");
+
+        searchForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          filterCards();
+        });
+
+        searchInput.addEventListener("input", () => {
+          filterCards();
+        });
+
+        function filterCards() {
+          const query = searchInput.value.trim().toLowerCase();
+          let visibleCards = 0;
+
+          cards.forEach((card) => {
+            const name = card.dataset.name?.toLowerCase() || "";
+            const date = card.dataset.date?.toLowerCase() || "";
+            const location = card.dataset.location?.toLowerCase() || "";
+            const category = card.dataset.category?.toLowerCase() || "";
+            const description =
+              card
+                .querySelector(".info__description")
+                ?.textContent.toLowerCase() || "";
+
+            const matches =
+              name.includes(query) ||
+              date.includes(query) ||
+              location.includes(query) ||
+              category.includes(query) ||
+              description.includes(query);
+
+            card.style.display = matches || query === "" ? "" : "none";
+            if (matches || query === "") visibleCards++;
+          });
+
+          noResults.style.display =
+            visibleCards === 0 && query !== "" ? "block" : "none";
+        }
+      });
+    </script>
+
+
+    <div id="google_translate_element" style="display:none;"></div>
+
+
+<script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+
+
+  </body>
+</html>

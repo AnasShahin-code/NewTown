@@ -1,0 +1,366 @@
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> -->
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تفاصيل الحدث</title>
+    <style>
+      body {
+        font-family: "Amiri", serif;
+        background-color: #121212;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        direction: rtl;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background: #1e1e1e;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 1.4em;
+      }
+
+      .header .back {
+        cursor: pointer;
+        font-size: 1.3em;
+        padding: 6px 12px;
+        border-radius: 6px;
+        transition: background 0.3s;
+      }
+
+      .header .back:hover {
+        background: #333;
+      }
+
+      .content {
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .event-title {
+        font-size: 2em;
+        margin-bottom: 10px;
+      }
+
+      .event-subtitle {
+        font-size: 1.1em;
+        color: #bbb;
+        margin-bottom: 20px;
+      }
+      .event-subsubtitle {
+        font-size: 1.1em;
+        color: #bbb;
+        margin-bottom: 20px;
+      }
+
+      .details p {
+        line-height: 1.7;
+        margin-bottom: 10px;
+      }
+
+      .gallery {
+        display: flex;
+        gap: 10px;
+        margin: 20px 0;
+        overflow-x: auto;
+        padding-bottom: 10px;
+      }
+
+      .gallery img {
+        width: 160px;
+        height: 110px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .gallery img:hover {
+        transform: scale(1.05);
+      }
+.related-content{
+  text-align: center;
+}
+      /* Modal for gallery images */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+      }
+      .modal img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 10px;
+      }
+
+      .map {
+        width: 100%;
+        height: 300px;
+        border-radius: 8px;
+        background: #333 center/cover no-repeat;
+        margin: 20px 0;
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+        position: sticky;
+        bottom: 10px;
+      }
+
+      .btn {
+        flex: 1;
+        padding: 14px;
+        text-align: center;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .btn.add {
+        background: #4caf50;
+      }
+      .btn.share {
+        background: #9c27b0;
+      }
+      .btn:hover {
+        opacity: 0.85;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <span class="back" onclick="history.back()">← رجوع</span>
+      <h1 id="header-title">تفاصيل الحدث</h1>
+    </div>
+
+    <div class="content">
+      <div class="event-title" id="event-title"></div>
+      <div class="event-subtitle" id="event-subtitle"></div>
+      <div class="details" id="event-details"></div>
+
+      <div class="gallery" id="gallery"></div>
+
+      <div class="map" id="map"></div>
+
+      <div class="actions">
+        <div class="btn add" onclick="addToCalendar()">📅 أضف إلى التقويم</div>
+        <div class="btn share" onclick="shareEvent()">🔗 مشاركة</div>
+      </div>
+    <div class="related-content">
+      <h1>  فعاليات ذات صلة </h1>
+      <a href="event.html?id=book_exhibition"> <img src="images/event_page/national_library_1.jpg" alt="معرض الكتاب" width="200px" height="150px"> </a>
+      <a href="event.html?id=musuem"> <img src="images/event_page/national_museum_1.jpg" alt="زيارة متحف" width="200px" height="150px"> </a>
+      <a href="event.html?id=musical_event"> <img src="images/event_page/opera_1.jpg" alt="حفلة غنائية" width="200px" height="150px"> </a>
+     
+</div>
+    <!-- Modal for gallery -->
+    <div class="modal" id="modal">
+      <img id="modal-img" src="musuem.jpg" alt="عرض الصورة" />
+    </div>
+
+
+
+    <script>
+      // Event database
+      const events = {
+        football1: {
+          title: "لعبة كرة قدم",
+          subtitle: "مباراة حماسية في ملعب الفيحاء",
+          start: "2025-10-01T18:00:00+03:00",
+          end: "2025-10-01T20:00:00+03:00",
+          location: "ملعب الفيحاء",
+          description: `
+          <p>مباراة ودية ممتعة مع حضور جماهيري كبير.</p>
+          <p><strong>الفرق:</strong> الوحدة  ×  الكرامة</p>
+          <p><strong>الملعب:</strong> ملعب الفيحاء  </p>
+        `,
+    
+          gallery: [
+            "images/event_page/fehaa_1.jpg",
+            "images/event_page/fehaa_2.jpg",
+            "images/event_page/fehaa_3.jpg",
+          ],
+          map: "images/event_page/fehaa_map.jpg",
+          subsubtitle: "مباراة حماسية في ملعب الفيحاء",
+          
+        },
+      
+        conference1: {
+          title: "مؤتمر علمي",
+          subtitle: "جامعة دمشق - التكنولوجيا والابتكار",
+          start: "2025-11-15",
+          end: "2025-11-15",
+          location: "جامعة دمشق - قاعة المؤتمرات",
+          description: `
+          <p>مؤتمر دولي حول التكنولوجيا والابتكار بمشاركة خبراء عالميين.</p>
+          <p><strong>المكان:</strong> قاعة المؤتمرات، جامعة دمشق</p>
+        `,
+          gallery: [
+            "images/event_page/Reda_said.jpg",
+            "images/event_page/Reda_said_2.jpg",
+            "images/event_page/Reda_said_3.jpg",
+          ],
+          map: "images/event_page/Reda_said_map.png",
+        },
+        musuem: {
+          title: "زيارة متحف",
+          subtitle: "رحلة مليئة بالمتعة والمعرفة",
+          start: "2025-12-1",
+          end: "2025-12-2",
+          location: "المتحف الوطني",
+          description: `
+          <p>انطلق معنا في رحلة ممتعة إلى المتحف الوطني، حيث يلتقي التاريخ العريق مع الفن والثقافة. سنأخذكم في جولة بين القاعات والمعارض التي تحتضن كنوزاً أثرية نادرة، ولوحات فنية تحكي قصص الماضي والحضارات. فرصة مميزة لاكتشاف الجمال والإبداع، والتعرّف على إرثنا الوطني الغني بطريقة شيقة وممتعة.</p>
+          <p><strong>المكان:</strong> المتحف الوطني</p>
+          
+        `,
+          gallery: [
+            "images/event_page/national_museum_1.jpg",
+            "images/event_page/national_museum_2.jpg",
+            "images/event_page/national_museum_3.jpg",
+          ],
+          map: "images/event_page/national_museum_map.png",
+        },
+        book_exhibition: {
+          title: "معرض الكتاب",
+          subtitle: "رحلة ممتعة إلى معرض الكتاب الدولي",
+          start: "30/11/2025",
+          end: "2/12/2025",
+          location: "المكتبة الوطنية",
+          description:
+            "رحلة ثقافية ممتعة إلى معرض الكتاب، لاكتشاف أحدث الإصدارات وعيش أجواء المعرفة والإلهام",
+          gallery: [
+            "images/event_page/national_library_1.jpg",
+            "images/event_page/national_library_2.jpg",
+          ],
+          map: "images/event_page/national_library_map.png",
+          
+        },
+        musical_event: {
+          title: "حفلة غنائية",
+          subtitle: "أمسية على أنغام الموسيقى",
+          start: "18/12/2025",
+          end: "18/12/2025",
+          location: "دار الأوبرا",
+          description:
+            "عِشوا أمسية من الطرب الأصيل مع صوت الأسطورة صباح فخري، حيث تأخذكم الألحان الدمشقية الساحرة في رحلة زمنية تعبق بالموشحات والقدود الحلبية، لتصنع ذكرى لا تُنسى",
+          gallery: [
+            "images/event_page/opera_1.jpg",
+            "images/event_page/opera_2.jpg",
+            "images/event_page/opera_3.jpg",
+            "images/event_page/opera_4.jpg",
+          ],
+          map: "images/event_page/opera_map.png",
+        },
+        cleaning_campaign: {
+          title: "حملة تنظيف المدينة",
+          subtitle: "معًا من أجل مدينة نظيفة",
+          start: "30/12/2025",
+          end: "1/1/2026",
+          location: "مدينة دمشق-حي الميدان",
+          description:
+            "انضموا إلينا في مبادرة تطوعية لتنظيف مدينتنا وجعلها أكثر جمالًا وحياة",
+          gallery: [
+            "images/event_page/clean_1.jpg",
+            "images/event_page/clean_2.jpg",
+            "images/event_page/clean_3.jpg",
+          ],
+          map: "images/event_page/clean_map.jpg",
+        },
+      };
+      
+
+      // Load event
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+      const event = events[id];
+
+      if (event) {
+        document.getElementById("header-title").textContent = event.title;
+        document.getElementById("event-title").textContent = event.title;
+        document.getElementById("event-subtitle").textContent = event.subtitle;
+        document.getElementById("event-details").innerHTML = event.description;
+
+        // Gallery
+        const galleryDiv = document.getElementById("gallery");
+        event.gallery.forEach((src) => {
+          const img = document.createElement("img");
+          img.src = src;
+          img.onclick = () => openModal(src);
+          galleryDiv.appendChild(img);
+        });
+
+        // Map
+        document.getElementById(
+          "map"
+        ).style.backgroundImage = `url(${event.map})`;
+      }
+
+      // Modal
+      function openModal(src) {
+        const modal = document.getElementById("modal");
+        const modalImg = document.getElementById("modal-img");
+        modalImg.src = src;
+        modal.style.display = "flex";
+        modal.onclick = () => (modal.style.display = "none");
+      }
+
+      // Calendar
+      function addToCalendar() {
+        if (!event) return;
+        const start = event.start.replace(/[-:]/g, "").replace(/\.\d\d\d/g, "");
+        const end = event.end.replace(/[-:]/g, "").replace(/\.\d\d\d/g, "");
+
+        const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+          event.title
+        )}&dates=${start}/${end}&details=${encodeURIComponent(
+          event.subtitle
+        )}&location=${encodeURIComponent(event.location)}`;
+        window.open(gCalUrl, "_blank");
+      }
+
+      // Share button
+      function shareEvent() {
+        if (!event) return;
+        const shareData = {
+          title: event.title,
+          text: `${event.title} - ${event.subtitle}`,
+          url: window.location.href,
+        };
+        if (navigator.share) {
+          navigator.share(shareData).catch(console.error);
+        } else {
+          prompt("انسخ الرابط لمشاركته:", window.location.href);
+        }
+      }
+    </script>
+
+    <script src="main.js"></script>
+  </body>
+</html>
